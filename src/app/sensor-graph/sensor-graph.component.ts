@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
-
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @Component({
@@ -12,6 +11,7 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
 })
 export class SensorGraphComponent implements OnInit {
 
+  public graphTitle = 'Machine 1';
   public maxXscale = 1000;
   public myvaluesY: number[];
   public myvaluesX: number[];
@@ -121,8 +121,10 @@ export class SensorGraphComponent implements OnInit {
     let myValuesY: number[] = [];
     let myValuesX: number[] = [];
     let myValues: any[] = [];
+    let randNum: number;
     for (let i = 0; i < 1000; i++) {
-      myValuesY.push(i / 999 * 60);
+      randNum = Math.floor(Math.random() * (60 - 50 + 1)) + 50 * i / 999;
+      myValuesY.push(randNum);
     }
     for (let i = 0; i < 1000; i++) {
       myValuesX.push(i / 999 * 6);
