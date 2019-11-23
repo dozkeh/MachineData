@@ -29,7 +29,8 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class DefaultService {
 
-    protected basePath = 'https://iot-demo-rk.azurewebsites.net/api';
+   //protected basePath = 'https://iot-demo-rk.azurewebsites.net/api';
+    protected basePath = 'http://localhost:7071/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
