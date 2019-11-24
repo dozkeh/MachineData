@@ -12,7 +12,7 @@
 import { SensorDataHistoryValues } from './sensorDataHistoryValues';
 
 
-export interface SensorDataHistory { 
+export interface SensorDataHistory {
     unitOfMeasure?: string;
     values?: Array<SensorDataHistoryValues>;
 }

@@ -11,30 +11,32 @@
  */
 /* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional }                      from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from '../encoder';
+         HttpResponse, HttpEvent } from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec } from '../encoder';
 
-import { Observable }                                        from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Sensor } from '../model/sensor';
 import { SensorData } from '../model/sensorData';
 import { SensorDataHistory } from '../model/sensorDataHistory';
 
-import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
-import { Configuration }                                     from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
+import { Configuration } from '../configuration';
 
 
 @Injectable()
 export class DefaultService {
 
-   //protected basePath = 'https://iot-demo-rk.azurewebsites.net/api';
+    // protected basePath = 'https://iot-demo-rk.azurewebsites.net/api';
     protected basePath = 'http://localhost:7071/api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient,
+                @Optional() @Inject (BASE_PATH) basePath: string,
+                @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -81,16 +83,16 @@ export class DefaultService {
         let headers = this.defaultHeaders;
 
         // authentication (ApiKeyAuth) required
-        if (this.configuration.apiKeys["code"]) {
-            queryParameters = queryParameters.set('code', this.configuration.apiKeys["code"]);
+        if (this.configuration.apiKeys.code) {
+            queryParameters = queryParameters.set('code', this.configuration.apiKeys.code);
         }
 
         // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
+        const httpHeaderAccepts: string[] = [
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
+        if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
@@ -102,9 +104,9 @@ export class DefaultService {
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
+                headers,
+                observe,
+                reportProgress
             }
         );
     }
@@ -116,14 +118,19 @@ export class DefaultService {
      * @param from From timestamp
      * @param to To timestamp
      * @param since Since number of hours. Only evaluated if neither &#39;from&#39; nor &#39;to&#39; supplied.
-     * @param quantizeTo Quantize to max. number of values. If less values measured, also less values will be returned, i.e. no server-size interpolation.
+     * @param quantizeTo Quantize to max. number of values. If less values measured,
+     * also less values will be returned, i.e. no server-size interpolation.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number, observe?: 'body', reportProgress?: boolean): Observable<SensorDataHistory>;
-    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SensorDataHistory>>;
-    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SensorDataHistory>>;
-    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number,
+                                observe?: 'body', reportProgress?: boolean): Observable<SensorDataHistory>;
+    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number,
+                                observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SensorDataHistory>>;
+    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number,
+                                observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SensorDataHistory>>;
+    public getSensorHistoryById(sensorId: number, from?: string, to?: string, since?: number, quantizeTo?: number,
+                                observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (sensorId === null || sensorId === undefined) {
             throw new Error('Required parameter sensorId was null or undefined when calling getSensorHistoryById.');
@@ -135,31 +142,31 @@ export class DefaultService {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (from !== undefined && from !== null) {
-            queryParameters = queryParameters.set('from', <any>from);
+            queryParameters = queryParameters.set('from', from as any);
         }
         if (to !== undefined && to !== null) {
-            queryParameters = queryParameters.set('to', <any>to);
+            queryParameters = queryParameters.set('to', to as any);
         }
         if (since !== undefined && since !== null) {
-            queryParameters = queryParameters.set('since', <any>since);
+            queryParameters = queryParameters.set('since', since as any);
         }
         if (quantizeTo !== undefined && quantizeTo !== null) {
-            queryParameters = queryParameters.set('quantizeTo', <any>quantizeTo);
+            queryParameters = queryParameters.set('quantizeTo', quantizeTo as any);
         }
 
         let headers = this.defaultHeaders;
 
         // authentication (ApiKeyAuth) required
-        if (this.configuration.apiKeys["code"]) {
-            queryParameters = queryParameters.set('code', this.configuration.apiKeys["code"]);
+        if (this.configuration.apiKeys.code) {
+            queryParameters = queryParameters.set('code', this.configuration.apiKeys.code);
         }
 
         // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
+        const httpHeaderAccepts: string[] = [
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
+        if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
@@ -171,16 +178,16 @@ export class DefaultService {
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
+                headers,
+                observe,
+                reportProgress
             }
         );
     }
 
     /**
      * Get set of all supported sensors
-     * 
+     *
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -194,16 +201,16 @@ export class DefaultService {
         let headers = this.defaultHeaders;
 
         // authentication (ApiKeyAuth) required
-        if (this.configuration.apiKeys["code"]) {
-            queryParameters = queryParameters.set('code', this.configuration.apiKeys["code"]);
+        if (this.configuration.apiKeys.code) {
+            queryParameters = queryParameters.set('code', this.configuration.apiKeys.code);
         }
 
         // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
+        const httpHeaderAccepts: string[] = [
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
+        if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
@@ -215,9 +222,9 @@ export class DefaultService {
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
+                headers,
+                observe,
+                reportProgress
             }
         );
     }

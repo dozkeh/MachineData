@@ -11,7 +11,7 @@
  */
 
 
-export interface SensorDataHistoryValues { 
+export interface SensorDataHistoryValues {
     date?: string;
     value?: number;
 }

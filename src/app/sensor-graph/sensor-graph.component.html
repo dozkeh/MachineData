@@ -1,8 +1,11 @@
+
+<!-- condition for first data fetch must be revised  
+  solution for updating otions after all data is fetched? -->
 <mat-toolbar>
         <span class='title-center'>{{graphTitle}}</span>
 </mat-toolbar>
 <div class="flex">
-    <div class="flex-item" *ngIf="!!lineChartData">
+    <div class="flex-item" *ngIf="lineChartData.length === 3">
       <div style="width: 100%;">
       <canvas baseChart height="40%" width="100%"
                   [datasets]="lineChartData"

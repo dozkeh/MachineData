@@ -2,7 +2,8 @@ import { AzureFunction, Context, HttpRequest } from '@azure/functions';
 
 const httpTrigger: AzureFunction = async function trig(context: Context, req: HttpRequest): Promise<void> {
     context.log('HTTP trigger function processed a request.');
-    // See: https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript#customize-the-http-endpoint
+    /* See: https://docs.microsoft.com/en-us/azure/azure-functions/
+            functions-bindings-http-webhook?tabs=javascript#customize-the-http-endpoint */
 
     const id = context.bindingData.sensorId;
     console.log(req);

@@ -11,7 +11,7 @@
  */
 
 
-export interface SensorData { 
+export interface SensorData {
     unitOfMeasure?: string;
     /**
      * Millseconds since Epoche
