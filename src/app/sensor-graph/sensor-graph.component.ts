@@ -17,7 +17,7 @@ import * as pluginAnnotations from 'chartjs-plugin-annotation';
 })
 export class SensorGraphComponent implements OnInit {
 
-  @Input() dataTimeRange: Date[];
+  @Input() dataTimeRange: Date[] ;
   public graphTitle = 'Machine 1';
   public sensorCount = 0;
   public firstFetch = false;
@@ -171,9 +171,9 @@ export class SensorGraphComponent implements OnInit {
  * sets the option for vizsalization
  */
   ngOnInit() {
-    // this.getSensorData();
+    //this.dataTimeRange = [new Date(2019, 0, 23, 15, 50), new Date(2019, 10, 23, 15, 50)];
+    this.getSensorData();
     Chart.pluginService.register(ChartZoom);
-    // this.setChartOptions();
   }
 /*
  * Gets the sensors from central database by subscibing get request of sensordataService,
@@ -197,7 +197,6 @@ export class SensorGraphComponent implements OnInit {
       });
     });
     this.setChartOptions();
-    // this.chart.update();
   }
   /*
   *
