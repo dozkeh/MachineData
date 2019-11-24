@@ -220,7 +220,7 @@ export class SensorGraphComponent implements OnInit {
         zoom: {
           zoom: {
             // zoom enabled, just on x-Axis
-            enabled: true,
+            enabled: false,
             mode: 'x'
           },
           rangeMin: {

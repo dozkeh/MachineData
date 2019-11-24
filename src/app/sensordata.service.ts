@@ -28,13 +28,11 @@ export class SensordataService {
   getSensorHistory(id: number, dataTimeMin: Date, dataTimeMax: Date): Observable<SensorDataHistory> {
     console.log(dataTimeMin.toLocaleString());
     console.log(dataTimeMax.toLocaleString());
-    const min = moment(dataTimeMin, 'DD.MM.YYYY HH:mm').toLocaleString();
-    const max = moment(dataTimeMax, 'DD.MM.YYYY HH:mm').toLocaleString();
-    console.log(min);
-    console.log(max);
-    return this.defaultService.getSensorHistoryById( id, '01.04.2019 12:00' , '01.09.2019 14:00', 100);
-    // return this.defaultService.getSensorHistoryById( id, null , null, 0 );
-    //return this.defaultService.getSensorHistoryById( id, dataTimeMin.toLocaleString() , dataTimeMax.toLocaleString(), 1000);
+    const min = dataTimeMin.getDate().toString() + '.' + dataTimeMin.getMonth().toString() + '.' + dataTimeMin.getFullYear().toString() +
+    ' ' + dataTimeMin.getHours().toString() +  ':' + dataTimeMin.getMinutes().toString();
+    const max = dataTimeMax.getDate().toString() + '.' + dataTimeMax.getMonth().toString() + '.' + dataTimeMax.getFullYear().toString() +
+    ' ' + dataTimeMax.getHours().toString() +  ':' + dataTimeMax.getMinutes().toString();
+    return this.defaultService.getSensorHistoryById( id, min, max, 100);
   }
 
   getSensor(id: number): Observable<SensorData> {
