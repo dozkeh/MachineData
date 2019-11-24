@@ -20,8 +20,8 @@ const httpTrigger: AzureFunction = async function trig(context: Context, req: Ht
     console.log('Fetching data between' , from, 'and', to);
 
     const values: any = [];
+    let timeAttr: string;
 
-    let timeAttr;
     paderborn.forEach(v => {
 
         // Hack: Sample data contains the date in an attribute which is NOT static. Use the "one" attr containing text "time"
@@ -35,7 +35,6 @@ const httpTrigger: AzureFunction = async function trig(context: Context, req: Ht
         const timeWrapped = v[timeAttr];
         const timeAsText = timeWrapped[Object.keys(timeWrapped)[0]];
         const time = moment(timeAsText, 'DD.MM.YYYY HH:mm');
-
         if ((!from || time >= from) && (!to || to >= time)) {
             let value;
             switch (id) {

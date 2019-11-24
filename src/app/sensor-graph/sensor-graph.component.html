@@ -1,10 +1,11 @@
 
-<!-- condition for first data fetch must be revised  
+<!-- TODO structural directive for first data fetch must be revised  
   solution for updating otions after all data is fetched? -->
-<mat-toolbar>
+<div>
+  <mat-toolbar>
         <span class='title-center'>{{graphTitle}}</span>
-</mat-toolbar>
-<div class="flex">
+  </mat-toolbar>
+  <div class="flex">
     <div class="flex-item" *ngIf="lineChartData.length === 3">
       <div style="width: 100%;">
       <canvas baseChart height="40%" width="100%"
@@ -14,7 +15,10 @@
                   [colors]="lineChartColors"
                   [legend]="lineChartLegend"
                   [chartType]="lineChartType"
+                  [plugins]="lineChartPlugins"
                   ></canvas>
       </div>
     </div>
-  </div>
+    </div>
+  <button mat-button mat-raised-button color="primary" (click)="getSensorData()">Get Data</button>
+</div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -31,6 +32,7 @@ import { SpanSelectionComponent } from './span-selection/span-selection.componen
     OwlNativeDateTimeModule,
     MatFormFieldModule,
     HttpClientModule,
+    FormsModule,
     // DefaultService,
   ],
   providers: [DefaultService],

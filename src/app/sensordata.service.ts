@@ -14,7 +14,6 @@ export class SensordataService {
   public sensors: Sensor[];
   public sensorDataHistory: SensorDataHistory;
   public sensorData: SensorData;
-  private requestCode = 'q0YxqdpKYOmwyVE8ghdVDygMX0pDAqzYrNpLXrOXNdZM1t/4oC537A==';
 
   constructor(private http: HttpClient, private defaultService: DefaultService) {
    }
@@ -25,7 +24,7 @@ export class SensordataService {
     return myObserver;
   }
 
-  getSensorHistory(id: number): Observable<SensorDataHistory> {
+  getSensorHistory(id: number, dataTimeMin: Date, dataTimeMax: Date): Observable<SensorDataHistory> {
     return this.defaultService.getSensorHistoryById( id, null, null, 100);
   }
 
