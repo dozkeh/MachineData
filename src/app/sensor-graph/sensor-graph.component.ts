@@ -199,8 +199,11 @@ export class SensorGraphComponent implements OnInit {
     this.setChartOptions();
     // this.chart.update();
   }
-  ngOnChanges (changes: SimpleChanges): void {
-    if (changes['dataTimeRange']) {
+  /*
+  *
+  */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.dataTimeRange) {
       this.getSensorData();
     }
   }

@@ -2,9 +2,6 @@
 <div class="example-wrapper">
     
         <label class="example-input-wrapper">
-            <div *ngIf = "dataTimeRange">
-                 <md-sensor-graph [dataTimeRange]="dataTimeRange"></md-sensor-graph>
-            </div>
             <h2>Range Selection</h2>
             <label>Selected Timespan:</label>
             <input [(ngModel)]="dataTimeRange"
@@ -16,6 +13,9 @@
                    [owlDateTimeTrigger]="dtRange"
                    [owlDateTime]="dtRange">
             <owl-date-time #dtRange></owl-date-time>
+            <div *ngIf = "dataTimeRange">
+                    <md-sensor-graph [dataTimeRange]="dataTimeRange"></md-sensor-graph>
+            </div>
         </label>
     </div>
     <h4>Value From Picker: {{dataTimeRange}}</h4>
