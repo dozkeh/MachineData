@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -198,6 +198,11 @@ export class SensorGraphComponent implements OnInit {
     });
     this.setChartOptions();
     // this.chart.update();
+  }
+  ngOnChanges (changes: SimpleChanges): void {
+    if (changes['dataTimeRange']) {
+      this.getSensorData();
+    }
   }
   /*
   * Sets the ChartOptions for line Chart

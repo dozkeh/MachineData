@@ -11,8 +11,10 @@ import { FormsModule } from '@angular/forms';
 export class SpanSelectionComponent implements OnInit {
 
   public dataTimeRange: Date[];
-  // TODO: Today is set 23/11/2019 for demo using dummy-Data, must be changed in today
-  public today = new Date(2019, 10, 23, 18, 0);
+  /* TODO: Today is set 23/11/2019 15.50 and start time is set 23.01.19 5.50
+  for demo using dummy-Data, must be changed in today */
+  public today = new Date(2019, 10, 23, 15, 50);
+  public annoDomini = new Date(2019, 0, 23, 5, 50);
 
   constructor() { }
 

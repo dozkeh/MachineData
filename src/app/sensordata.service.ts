@@ -25,7 +25,8 @@ export class SensordataService {
   }
 
   getSensorHistory(id: number, dataTimeMin: Date, dataTimeMax: Date): Observable<SensorDataHistory> {
-    return this.defaultService.getSensorHistoryById( id, null, null, 100);
+    //return this.defaultService.getSensorHistoryById( id, dataTimeMin.toString() , dataTimeMax.toString(), null);
+    return this.defaultService.getSensorHistoryById( id, null , null, 1000 );
   }
 
   getSensor(id: number): Observable<SensorData> {
