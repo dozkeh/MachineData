@@ -62,7 +62,7 @@ export class SensorGraphComponent implements OnInit {
           id: 'y-axis-0',
           position: 'left',
           gridLines: {
-            color: 'rgba(32,18,171,0.5)',
+          color: 'rgba(32,18,171,0.5)',
           },
           ticks: {
             fontColor: 'rgba(32,18,171,1)',
@@ -123,8 +123,6 @@ export class SensorGraphComponent implements OnInit {
  * sets the option for vizsalization
  */
   ngOnInit() {
-    this.dataTimeRange = [new Date(2019, 0, 23, 15, 50), new Date(2019, 10, 23, 15, 50)];
-    this.getSensorData();
   }
 
 /*
@@ -156,9 +154,5 @@ export class SensorGraphComponent implements OnInit {
     if (changes.dataTimeRange) {
       this.getSensorData();
     }
-  }
-
-  ngAfterContentInit(): void {
-   this.getSensorData();
   }
 }

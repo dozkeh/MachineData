@@ -5,7 +5,7 @@
         <label>
         <div>
                 <label class="fonts" >Selected Timespan:</label>
-                <input [(ngModel)]="dataTimeRange"
+                <input 
                     placeholder="Data Time Range:"
                    [style.width]="'350px'"
                    [max]="today"
@@ -14,7 +14,8 @@
                    [owlDateTimeTrigger]="dtRange"
                    [owlDateTime]="dtRange"
                    class="fonts"
-                   size=180px>
+                   size=180px
+                   [(ngModel)]="dataTimeRange">
             <owl-date-time class="fonts" #dtRange></owl-date-time>
         </div>
         </label>
