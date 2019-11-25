@@ -26,8 +26,6 @@ export class SensordataService {
   }
 
   getSensorHistory(id: number, dataTimeMin: Date, dataTimeMax: Date): Observable<SensorDataHistory> {
-    console.log(dataTimeMin.toLocaleString());
-    console.log(dataTimeMax.toLocaleString());
     const min = dataTimeMin.getDate().toString() + '.' + dataTimeMin.getMonth().toString() + '.' + dataTimeMin.getFullYear().toString() +
     ' ' + dataTimeMin.getHours().toString() +  ':' + dataTimeMin.getMinutes().toString();
     const max = dataTimeMax.getDate().toString() + '.' + dataTimeMax.getMonth().toString() + '.' + dataTimeMax.getFullYear().toString() +

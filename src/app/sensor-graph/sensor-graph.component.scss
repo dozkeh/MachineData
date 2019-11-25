@@ -1,3 +1,7 @@
+@import '~@angular/material/theming';
+$config: mat-typography-config();
+$col-darkblue: 'rgba(32,18,171,0.5)';
+
 .flex-item {
     max-width: 1600px;
 }
@@ -5,3 +9,9 @@
     flex: 1 1 auto;
     text-align: center;
   }
+
+  .fonts{
+    font-size: mat-font-size($config, headline);
+    font-family: mat-font-family($config);
+}
+

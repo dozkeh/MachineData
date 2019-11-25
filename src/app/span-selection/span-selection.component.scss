@@ -1,5 +1,14 @@
+@import '~@angular/material/theming';
+$config: mat-typography-config();
+
 .owl-date-time {
+
 align-self: center;
-font-family: 'Roboto, monospace';
-font-size: 18;
+font-size: mat-font-size($config, headline);
+font-family: mat-font-family($config);
+}
+
+.fonts{
+    font-size: mat-font-size($config, headline);
+    font-family: mat-font-family($config);
 }

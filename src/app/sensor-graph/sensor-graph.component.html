@@ -1,9 +1,12 @@
 
-<!-- TODO structural directive for first data fetch must be revised  
-  solution for updating otions after all data is fetched? -->
+<!-- TODO structural directive for first data fetch must be revised -  
+  This solution is for updating options after all data is fetched -->
 <div>
   <mat-toolbar>
-        <span class='title-center'>{{graphTitle}}</span>
+        <span class='title-center'>
+            <h1 class="fonts">{{graphTitle}}
+            </h1>
+        </span>
   </mat-toolbar>
   <div class="flex">
     <div class="flex-item" *ngIf="lineChartData.length === 3">
@@ -15,10 +18,9 @@
                   [colors]="lineChartColors"
                   [legend]="lineChartLegend"
                   [chartType]="lineChartType"
-                  [plugins]="lineChartPlugins"
+                  class = "fonts"
                   ></canvas>
       </div>
     </div>
-    </div>
-  <button mat-button mat-raised-button color="primary" (click)="getSensorData()">Get Data</button>
+  </div>
 </div>

@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpanSelectionComponent } from './span-selection/span-selection.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
