@@ -12,3 +12,13 @@ font-family: mat-font-family($config);
     font-size: mat-font-size($config, headline);
     font-family: mat-font-family($config);
 }
+
+.mymain{
+    width: 80%;
+    float: right;
+}
+
+#graph {
+    position: relative;
+    align-self: center;
+}

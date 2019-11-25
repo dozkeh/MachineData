@@ -1,24 +1,20 @@
-<div>
-    <div><md-sensor-graph [dataTimeRange]="dataTimeRange"></md-sensor-graph>
-    </div>
-    <div>
-        <label>
-        <div>
-                <label class="fonts" >Selected Timespan:</label>
+<div class="mymain">
+        <div ><md-sensor-graph [dataTimeRange]="dataTimeRange"></md-sensor-graph>
+        </div>
+        <div class="flex" style="padding-left: 20%;">
+                <label class="fonts">Selected Timespan:</label>
                 <input 
                     placeholder="Data Time Range:"
-                   [style.width]="'350px'"
+                   [style.width]="'500px'"
                    [max]="today"
+                   class="fonts"
                    [min]="annoDomini"
                    [selectMode]="'range'"
                    [owlDateTimeTrigger]="dtRange"
                    [owlDateTime]="dtRange"
-                   class="fonts"
-                   size=180px
-                   [(ngModel)]="dataTimeRange">
-            <owl-date-time class="fonts" #dtRange></owl-date-time>
+                   [(ngModel)]="dataTimeRange"
+                   style="text-align: center;">
+            <owl-date-time #dtRange></owl-date-time>
         </div>
-        </label>
-    </div>
 </div>
     

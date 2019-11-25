@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FormsModule } from '@angular/forms';
+import { } from 'ng-material-datetimepicker';
 
 @Component({
   selector: 'md-span-selection',

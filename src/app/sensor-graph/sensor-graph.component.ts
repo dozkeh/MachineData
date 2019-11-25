@@ -33,6 +33,7 @@ export class SensorGraphComponent implements OnInit {
       position: 'right',
       labels: {
         fontColor: 'rgba(0,0,0,1)',
+        fontSize: 24,
       },
     },
     elements: {
@@ -71,6 +72,7 @@ export class SensorGraphComponent implements OnInit {
             display: true,
             labelString: 'temperature / °C',
             fontColor: 'rgba(32,18,171,1)',
+            fontSize: 24,
          }
         },
         {
@@ -86,6 +88,7 @@ export class SensorGraphComponent implements OnInit {
             display: true,
             labelString: 'pressure / bar',
             fontColor: 'rgba(235,140,0,1)',
+            fontSize: 24,
          }
         }
       ]
