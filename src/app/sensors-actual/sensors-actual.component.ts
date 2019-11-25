@@ -14,6 +14,7 @@ export class SensorsActualComponent implements OnInit {
   constructor(private sensordataService: SensordataService) { }
 
   ngOnInit() {
+    this.getActualSensorData();
   }
 
   getActualSensorData(): void {
