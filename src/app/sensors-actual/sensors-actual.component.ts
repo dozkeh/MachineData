@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SensordataService } from '../sensordata.service';
-import { SensorData } from '../sensordata-swagger';
+import { SensordataAndName } from '../sensordata-and-name';
 
 @Component({
   selector: 'md-sensors-actual',
@@ -9,7 +9,7 @@ import { SensorData } from '../sensordata-swagger';
 })
 export class SensorsActualComponent implements OnInit {
 
-  public actualSensorDatas: SensorData[];
+  public actualSensorDatas: SensordataAndName[] = [];
 
   constructor(private sensordataService: SensordataService) { }
 
@@ -21,10 +21,10 @@ export class SensorsActualComponent implements OnInit {
     this.sensordataService.getSensors().subscribe(sensors => {
       sensors.forEach(sensor => {
         this.sensordataService.getSensor(sensor.id).subscribe( actualSensorData => {
-        this.actualSensorDatas.push(actualSensorData);
+        this.actualSensorDatas.push({name: sensor.name, sensordata: actualSensorData});
+        });
       });
       });
-    });
   }
 
 }

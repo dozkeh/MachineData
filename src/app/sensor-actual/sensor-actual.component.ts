@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { SensorData } from '../sensordata-swagger';
+import { SensordataAndName } from '../sensordata-and-name';
 
 
 @Component({
@@ -10,11 +11,15 @@ import { SensorData } from '../sensordata-swagger';
 })
 export class SensorActualComponent implements OnInit {
 
-  @Input() sensorData: SensorData;
+  @Input() sensorDataAndName: SensordataAndName;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public getValueRound(): string {
+    return this.sensorDataAndName.sensordata.value.toFixed(2);
   }
 
 }
