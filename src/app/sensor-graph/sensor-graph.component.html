@@ -1,5 +1,5 @@
 
-<!-- TODO structural directive for first data fetch must be revised -  
+<!-- TODO ChartDataLength is hard coded, must be set to count of sensors -  
   This solution is for updating options after all data is fetched -->
   <div>
   <mat-toolbar>
@@ -9,9 +9,9 @@
         </span>
   </mat-toolbar>
   <div class="flex">
-    <div class="flex-item" style="margin-bottom: 40px"
+    <div class="flex-item" style="margin-left: 40px; margin-bottom: 40px; margin-right: 40px"
     *ngIf="lineChartData.length === 3">
-      <canvas baseChart height="40%" width="80%" mar
+      <canvas baseChart height="40%" width="100%"
                   [datasets]="lineChartData"
                   [labels]="lineChartLabels"
                   [options]="lineChartOptions"

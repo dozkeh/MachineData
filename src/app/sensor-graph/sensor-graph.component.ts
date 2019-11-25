@@ -1,30 +1,18 @@
-import { Component, OnInit, Input, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { Chart } from 'chart.js';
-import * as ChartZoom from 'chartjs-plugin-zoom';
+import { Color, Label } from 'ng2-charts';
 import { SensordataService } from '../sensordata.service';
-import { Observable, of } from 'rxjs';
-import { SensorDataHistory } from '../sensordata-swagger';
-import { SpanSelectionComponent } from '../span-selection/span-selection.component';
-import * as pluginAnnotations from 'chartjs-plugin-annotation';
 
 @Component({
   selector: 'md-sensor-graph',
   templateUrl: './sensor-graph.component.html',
   styleUrls: ['./sensor-graph.component.scss']
 })
-export class SensorGraphComponent implements OnInit {
+export class SensorGraphComponent implements OnInit, OnChanges {
 
   @Input() dataTimeRange: Date[];
   public graphTitle = 'Machine 1';
-  public sensorCount = 0;
-  public firstFetch = false;
-  public maxXscale = 1000;
   public timeFormat = 'MM/DD/YYYY HH:mm';
-  public myvaluesY: number[];
-  public myvaluesX: number[];
   public lineChartData: ChartDataSets[] = [];
   public lineChartLabels: Label[];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
@@ -58,6 +46,8 @@ export class SensorGraphComponent implements OnInit {
           display: true,
         },
       }],
+      // TODO get labelStrings dynamically from fetched data
+      // two diofferent y-axis (y-axis-0 and y-axis-1) on left and right
       yAxes: [
         {
           id: 'y-axis-0',
@@ -118,27 +108,33 @@ export class SensorGraphComponent implements OnInit {
     }
   ];
 
+  /*
+  * Constructor with injektion of the Service to fetch the sensor data with request
+  */
   constructor(private sensordataService: SensordataService) { }
 
-/**
- * Fetches sensor data asynchron
- * adds plugin for zooming
- * sets the option for vizsalization
- */
   ngOnInit() {
+  }
+
+ /*
+  * This Lifecycle hooks sets the sensor data depending on changes of Input dataTimeRange by datetimepicker
+  */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.dataTimeRange) {
+      this.getSensorData();
+    }
   }
 
 /*
  * Gets the sensors from central database by subscibing get request of sensordataService,
  * iterates fetched sensors to get history of every single one from database
- * and puts the fetched data rows into the lineChartData
+ * and puts the asynchronous fetched data rows into the lineChartData
  * reassignes another axis for pressure sensor
  */
   public getSensorData() {
     this.sensordataService.getSensors().subscribe(sensors => {
       this.lineChartData = [];
       sensors.forEach(sensor => {
-        console.log('Sensor: ', sensor);
         this.sensordataService.getSensorHistory(sensor.id, this.dataTimeRange[0], this.dataTimeRange[1]).subscribe(sensorDataHistory => {
           const data: Chart.ChartPoint[] = [];
           sensorDataHistory.values.forEach( value => {
@@ -150,12 +146,4 @@ export class SensorGraphComponent implements OnInit {
     });
   }
 
-  /*
-  *
-  */
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.dataTimeRange) {
-      this.getSensorData();
-    }
-  }
 }

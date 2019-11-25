@@ -1,0 +1,10 @@
+<div class="container">
+        <h2>Sensor Dashboard</h2>
+      </div>
+      <div class="container" >
+      <div class="flex-container" fxLayout="row" fxLayout.sm="column"  fxLayoutGap="10px">
+            <md-sensor-actual *ngFor="let actualSensorData of actualSensorDatas"
+            [sensorData]="actualSensorData"></md-sensor-actual>
+      </div>
+      </div>
+    
