@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DefaultService } from './sensordata-swagger/api/default.service';
 import { MatSidenavModule, MatButtonModule, MatIconModule} from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpanSelectionComponent } from './span-selection/span-selection.component';
 import { SensorActualComponent } from './sensor-actual/sensor-actual.component';
 import { SensorsActualComponent } from './sensors-actual/sensors-actual.component';
+import { SensordataService } from './sensordata.service';
 
 
 @NgModule({
@@ -42,9 +44,10 @@ import { SensorsActualComponent } from './sensors-actual/sensors-actual.componen
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    AngularSvgIconModule,
     // DefaultService,
   ],
-  providers: [DefaultService],
+  providers: [DefaultService, SensordataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
