@@ -8,6 +8,10 @@ import { SensordataService } from '../sensordata.service';
   templateUrl: './sensor-graph.component.html',
   styleUrls: ['./sensor-graph.component.scss']
 })
+
+/*
+ * This class sets and holds all data necessary for line chart
+ */
 export class SensorGraphComponent implements OnInit, OnChanges {
 
   @Input() dataTimeRange: Date[];
@@ -33,6 +37,7 @@ export class SensorGraphComponent implements OnInit, OnChanges {
     },
     scales: {
       xAxes: [{
+        // time based data
         display: 'true',
         type: 'time',
         time: {
@@ -47,7 +52,7 @@ export class SensorGraphComponent implements OnInit, OnChanges {
         },
       }],
       // TODO get labelStrings dynamically from fetched data
-      // two diofferent y-axis (y-axis-0 and y-axis-1) on left and right
+      // two different y-axis (y-axis-0 and y-axis-1) on left and right
       yAxes: [
         {
           id: 'y-axis-0',
@@ -110,6 +115,7 @@ export class SensorGraphComponent implements OnInit, OnChanges {
 
   /*
   * Constructor with injektion of the Service to fetch the sensor data with request
+  * @param Injection of a SensordataService to fetch the data
   */
   constructor(private sensordataService: SensordataService) { }
 
@@ -118,6 +124,7 @@ export class SensorGraphComponent implements OnInit, OnChanges {
 
  /*
   * This Lifecycle hooks sets the sensor data depending on changes of Input dataTimeRange by datetimepicker
+  * @param changes contains all changes made on Inputs
   */
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.dataTimeRange) {
@@ -126,11 +133,12 @@ export class SensorGraphComponent implements OnInit, OnChanges {
   }
 
 /*
- * Gets the sensors from central database by subscibing get request of sensordataService,
+ * Gets the sensors from central database by subscibing get request of inhected sensordataService [[SensordataService]],
  * iterates fetched sensors to get history of every single one from database
  * and puts the asynchronous fetched data rows into the lineChartData
  * reassignes another axis for pressure sensor
  */
+// TODO debounce fetching to get the same line color everytime
   public getSensorData() {
     this.sensordataService.getSensors().subscribe(sensors => {
       this.lineChartData = [];

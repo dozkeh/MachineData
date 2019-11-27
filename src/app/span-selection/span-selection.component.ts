@@ -5,6 +5,10 @@ import { Component, OnInit, AfterContentInit } from '@angular/core';
   templateUrl: './span-selection.component.html',
   styleUrls: ['./span-selection.component.scss'],
 })
+
+/*
+ * This class manages the values of datetimepicker
+ */
 export class SpanSelectionComponent implements OnInit, AfterContentInit {
 
   public dataTimeRange: Date[] = [];

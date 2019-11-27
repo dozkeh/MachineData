@@ -7,6 +7,10 @@ import { SensordataAndName } from '../sensordata-and-name';
   templateUrl: './sensors-actual.component.html',
   styleUrls: ['./sensors-actual.component.scss']
 })
+
+/*
+* Fetches and holds the current sensor data for all sesnors
+*/
 export class SensorsActualComponent implements OnInit {
 
   public actualSensorDatas: SensordataAndName[] = [];

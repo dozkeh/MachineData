@@ -9,6 +9,10 @@ import { SensordataAndName } from '../sensordata-and-name';
   templateUrl: './sensor-actual.component.html',
   styleUrls: ['./sensor-actual.component.scss']
 })
+
+/*
+ * This class holds data of the card to show the current sensor value
+ */
 export class SensorActualComponent implements OnInit {
 
   @Input() sensorDataAndName: SensordataAndName;
@@ -18,6 +22,9 @@ export class SensorActualComponent implements OnInit {
   ngOnInit() {
   }
 
+/*
+ * @return current sensor value reduced on two decimal places
+ */
   public getValueRound(): string {
     return this.sensorDataAndName.sensordata.value.toFixed(2);
   }
