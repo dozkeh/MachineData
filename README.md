@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## How to run MachineData
 
-Go to git-repsitory and get the zip-File:
+Go to git-repository and get the zip-File:
 https://github.com/dozkeh/MachineData
 Or clone the project: git clone https://github.com/dozkeh/MachineData
 Open CLI (console or terminal)
