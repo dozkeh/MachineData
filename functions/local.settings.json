@@ -1,0 +1,16 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=storageaccountromit86a7;AccountKey=IshA/qXwIYmbkhG2rhLNfJAOrAbnMmP0hFdUUNi8ePnvbTCAn+usXkCSEUcrDfA2MhVhbddWrqJNOBKnBRkF3g==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_EXTENSION_VERSION": "~2",
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "fdff1c8a-4ef7-4bc9-82f8-4f1b0125522f",
+    "WEBSITE_NODE_DEFAULT_VERSION": "~10"
+  },
+  "ConnectionStrings": {},
+  "Host":{
+    "LocalHttpPort":7071,
+    "CORS":"*",
+    "CORSCredentials":false
+  }
+}
