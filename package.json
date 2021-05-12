@@ -23,7 +23,7 @@
     "@angular/router": "~8.2.13",
     "angular-material-time-picker": "^1.0.8",
     "angular-svg-icon": "^8.0.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "chartjs-plugin-annotation": "^0.5.7",
     "chartjs-plugin-zoom": "^0.7.5",
     "debounce": "^1.2.0",
